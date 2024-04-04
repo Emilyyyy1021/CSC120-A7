@@ -13,7 +13,6 @@ public class House extends Building{
     this.hasDiningRoom = hasDiningRoom;
     this.hasElevator = hasElevator;
     this.residents = residents;
-    
   }
 
   /**
@@ -81,10 +80,9 @@ public class House extends Building{
   }
 
   public void goToFloor(int floorNum) {
-    if (hasElevator == true){
+    if (this.hasElevator == true){
       super.goToFloor(floorNum);
-    }
-    
+    } 
   }
 
   // public static void main(String[] args) {

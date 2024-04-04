@@ -16,6 +16,13 @@ public class Building {
         this.address = address; // Override address
     }
 
+    /* Overloaded constructor with name and floor */
+    public Building(String name, int nFloors) {
+        this();
+        this.name = name;
+        this.nFloors = nFloors;
+    }
+
     /* Overloaded constructor with name, address */
     public Building(String name, String address) {
         this(name, address, 1); // Call full constructor with hard-coded # floors
@@ -75,6 +82,18 @@ public class Building {
         }
         System.out.println("You are now on floor #" + floorNum + " of " + this.name);
         this.activeFloor = floorNum;
+    }
+
+    public void goToFloor(double floorNum) {
+        int newFloor = (int)Math.round(floorNum);
+        if (this.activeFloor == -1) {
+            throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+        }
+        if (newFloor < 1 || newFloor > this.nFloors) {
+            throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
+        }
+        System.out.println("You are now on floor #" + newFloor + " of " + this.name);
+        this.activeFloor = newFloor;
     }
 
     public void goUp() {

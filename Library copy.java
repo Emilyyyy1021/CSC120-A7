@@ -92,7 +92,7 @@ public class Library extends Building {
   }
 
   public void goToFloor(int floorNum) {
-    if (hasElevator == true){
+    if (this.hasElevator == true){
       super.goToFloor(floorNum);
     }
   }

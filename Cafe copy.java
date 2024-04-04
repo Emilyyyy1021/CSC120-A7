@@ -46,6 +46,10 @@ public class Cafe extends Building{
         super.showOptions();
     }
 
+    public void goToFloor(int floorNum) {
+        super.goToFloor(floorNum)
+      }
+
     public static void main(String[] args) {
         Cafe CC = new Cafe("CC", "100 Elm St", 3, 100, 50, 20, 30);
         CC.sellCoffee(5, 2, 1);
