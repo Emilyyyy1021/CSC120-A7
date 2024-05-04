@@ -87,10 +87,16 @@ public class Library extends Building {
     }
   }
 
+  /* show the options */
+  @Override
   public void showOptions() {
     System.out.println("Available options at " + this.name + ":\n + addTitle() \n + checkout() \n + returnBook() \n + printCollection()\n + goToFloor(n)");
   }
 
+  /**
+   * go to different floor
+   * @param floorNum
+   */
   public void goToFloor(int floorNum) {
     try {
         if (this.hasElevator) {

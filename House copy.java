@@ -104,10 +104,16 @@ public class House extends Building{
     }
   }
 
+  /* show the options */
+  @Override
   public void showOptions() {
     System.out.println("Available options at " + this.name + ":\n + moveIn() \n + moveOut() \n + goToFloor(n)");
   }
 
+  /**
+   * go to different floor
+   * @param floorNum
+   */
   public void goToFloor(int floorNum) {
     try {
         if (this.hasElevator) {

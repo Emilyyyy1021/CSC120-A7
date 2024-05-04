@@ -63,10 +63,13 @@ public class Cafe extends Building{
         System.out.println("\nCups: " + nCups);
     }
 
+    /* show the options */
+    @Override
     public void showOptions() {
         System.out.println("Available options at " + this.name + ":\n + sellCoffee() \n + restock() \n + goToFloor(n)");
     }
 
+    /*go to other floor */
     public void goToFloor(int floorNum) {
         System.out.println("Unavailable");
       }
