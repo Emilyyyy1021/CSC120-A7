@@ -88,13 +88,53 @@ public class Library extends Building {
   }
 
   public void showOptions() {
-    super.showOptions();
+    System.out.println("Available options at " + this.name + ":\n + addTitle() \n + checkout() \n + returnBook() \n + printCollection()\n + goToFloor(n)");
   }
 
   public void goToFloor(int floorNum) {
-    if (this.hasElevator == true){
-      super.goToFloor(floorNum);
+    try {
+        if (this.hasElevator) {
+            super.goToFloor(floorNum);
+        } else {
+            if (floorNum > activeFloor) {
+                super.goUp();
+                System.out.println("current floor: " + activeFloor);
+            } else if (floorNum < activeFloor) {
+                super.goDown();
+                System.out.println("current floor: " + activeFloor);
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("Unavailable to move");
     }
+
   }
 
+  /**
+     * Checkout the book with a specified user ID
+     * @param title title of book
+     * @param studentID ID of the student
+     */
+    public void checkOut(String title, String studentID){
+      if (isAvailable(title) == true) {
+          this.collection.replace(title, false);
+          System.out.println("Book '" + title + "' checked out by user with ID: " + studentID);
+      } else {
+          System.out.println("Book '" + title + "' is not available for checkout.");
+      }
+  }
+
+  /**
+   * Return the book with a specified user ID
+   * @param title title of book
+   * @param studentID ID of the smith student 
+   */
+  public void returnBook(String title, String studentID){
+      if (!isAvailable(title)) {
+          this.collection.replace(title, true);
+          System.out.println("Book '" + title + "' returned by user with ID: " + studentID);
+      } else {
+          System.out.println("Book '" + title + "' is already returned.");
+      }
+  }
 }

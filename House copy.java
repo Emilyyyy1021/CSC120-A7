@@ -46,6 +46,19 @@ public class House extends Building{
     }
   }
 
+   /**
+     * Resident move-in with specified age and occupation
+     * @param name Name of resident
+     * @param year which year the student is
+     */
+    public void moveIn(String name, String year){
+      String residentInfo = name + " (Age: " + age")";
+      if (!isResident(name)){
+          this.residents.add(residentInfo);
+          System.out.println(residentInfo + " moved into " + this.name);
+      }
+  }
+
   /**
    * resident moveout
    * @param name the name of resident
@@ -62,6 +75,22 @@ public class House extends Building{
   }
 
   /**
+     * Resident move-out with specified departure reason
+     * @param name Name of resident
+     * @param reason Reason for departure
+     * @return Name of resident who moved out
+     */
+    public String moveOut(String name, String reason){
+      if (isResident(name)){
+          this.residents.remove(name);
+          return name + " moved out of " + this.name + " due to " + reason;
+      } else {
+          return name + " not found in " + this.name;
+      }
+  }
+
+
+  /**
    * the resident is in the house
    * @param person the resident 
    * @return T/F if the resident is the list
@@ -76,13 +105,27 @@ public class House extends Building{
   }
 
   public void showOptions() {
-    super.showOptions();
+    System.out.println("Available options at " + this.name + ":\n + moveIn() \n + moveOut() \n + goToFloor(n)");
   }
 
   public void goToFloor(int floorNum) {
-    if (this.hasElevator == true){
-      super.goToFloor(floorNum);
-    } 
+    try {
+        if (this.hasElevator) {
+            super.goToFloor(floorNum);
+        } else {
+            if (floorNum > activeFloor) {
+                super.goUp();
+                System.out.println("current floor: " + activeFloor);
+            } else if (floorNum < activeFloor) {
+                super.goDown();
+                System.out.println("current floor: " + activeFloor);
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("Unavailable to move");
+    }
+}
+
   }
 
   // public static void main(String[] args) {
